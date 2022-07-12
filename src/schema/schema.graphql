@@ -17,7 +17,7 @@ type Course {
   class: Int!
   time: Float!
   logo: String!
-  level: Nivel!
+  level: Level!
   path: String!
   teacher: String!
   students: [Student]
