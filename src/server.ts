@@ -9,16 +9,16 @@ app.use(cors());
 app.use(compression());
 
 app.get('/', (req, res) => {
-  res.send('Hola')
-})
+  res.send('Hola');
+});
 
-const PORT = 5200
+const PORT = 5200;
 
 const httpServer = createServer(app);
 
 httpServer.listen(
   {
-    port: PORT
+    port: PORT,
   },
   () => console.log(`Listening in http://localhost:${PORT}`)
 );
