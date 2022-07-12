@@ -12,7 +12,10 @@
     "@types/node": "^18.0.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node build/server.js",
+    "build": "tsc -p . && ncp src/schema build/schema",
+    "start:dev": "npm run build:dev",
+    "build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" \"src/server.ts\" -e ts,graphql,json"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,8 @@
     "http": "^0.0.1-security",
     "lodash": "^4.17.21",
     "ncp": "^2.0.0",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.8.2",
     "typescript": "^4.7.4"
   }
 }
