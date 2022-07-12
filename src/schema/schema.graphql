@@ -1,6 +1,7 @@
 type Query {
   students: [Student!]!
   student(id: ID!): Student!
+  courses: [Course!]!
 }
 
 type Student {
