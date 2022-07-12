@@ -1,9 +1,9 @@
 import express from 'express';
-import compression from 'compression';
-import { ApolloServer } from 'apollo-server-express';
-import cors from 'cors';
-import { createServer } from 'http';
 import expressPlayGround from 'graphql-playground-middleware-express';
+import { ApolloServer } from 'apollo-server-express';
+import { createServer } from 'http';
+import compression from 'compression';
+import cors from 'cors';
 import schema from './schema';
 
 const app = express();
@@ -37,5 +37,5 @@ httpServer.listen(
   {
     port: PORT,
   },
-  () => console.log(`Listening in http://localhost:${PORT}/graphql`)
+  () => console.log(`Listening in http://localhost:${PORT}`)
 );
