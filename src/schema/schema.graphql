@@ -2,6 +2,7 @@ type Query {
   students: [Student!]!
   student(id: ID!): Student!
   courses: [Course!]!
+  course(id: ID!): Course!
 }
 
 type Student {
@@ -15,7 +16,7 @@ type Student {
 type Course {
   id: ID!
   title: String!
-  description: String
+  description: String!
   class: Int!
   time: Float!
   logo: String!
