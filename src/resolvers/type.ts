@@ -23,6 +23,7 @@ const type: IResolvers = {
       });
       return studentsList;
     },
+    path: (parent) => `https://www.udemy.com${parent.path}`,
   },
 };
 
