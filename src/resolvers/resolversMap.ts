@@ -6,7 +6,7 @@ import type from './type';
 const resolversMap: IResolvers = {
   ...query,
   ...type,
-  ...mutation
+  ...mutation,
 };
 
 export default resolversMap;

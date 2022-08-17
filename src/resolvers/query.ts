@@ -26,7 +26,7 @@ const query: IResolvers = {
     },
     course(__: void, { id }): any {
       const course = database.courses.filter((course) => course.id === id)[0];
-      if(course === undefined) {
+      if (course === undefined) {
         return {
           id: '-1',
           title: `Course with id ${id} not found`,
@@ -36,9 +36,9 @@ const query: IResolvers = {
           logo: '',
           level: '',
           path: '',
-        }
+        };
       }
-      return course
+      return course;
     },
   },
 };

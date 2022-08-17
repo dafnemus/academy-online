@@ -6,7 +6,7 @@ type Query {
 }
 
 type Mutation {
-  newCourse(course: CourseInput!): Course!
+  createCourse(course: CourseInput!): Course!
   updateCourse(course: CourseInput!): Course!
   deleteCourse(id: ID!): Course!
 }
