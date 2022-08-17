@@ -5,6 +5,12 @@ type Query {
   course(id: ID!): Course!
 }
 
+type Mutation {
+  newCourse(course: CourseInput!): Course!
+  updateCourse(course: CourseInput!): Course!
+  deleteCourse(id: ID!): Course!
+}
+
 type Student {
   id: ID!
   name: String!
