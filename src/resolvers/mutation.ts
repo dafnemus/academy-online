@@ -18,8 +18,25 @@ const mutation: IResolvers = {
         reviews: [],
       };
 
-      database.courses.push(newCourse);
-      return newCourse;
+      if (
+        database.courses.filter((course) => course.title === newCourse.title)
+          .length === 0
+      ) {
+        database.courses.push(newCourse);
+        return newCourse;
+      }
+      return {
+        id: 'Error. -1',
+        title: 'Error. The course already exists',
+        description: '',
+        class: -1,
+        time: 0.0,
+        level: 'TODOS',
+        logo: '',
+        path: '',
+        teacher: '',
+        reviews: [],
+      };;
     },
   },
 };
