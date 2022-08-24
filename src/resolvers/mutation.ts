@@ -2,6 +2,19 @@ import { IResolvers } from '@graphql-tools/utils';
 import _ from 'lodash';
 import { database } from '../data/data.store';
 
+const errorMessage = {
+  id: 'Error. -1',
+  title: 'Error. The course not exist',
+  description: '',
+  class: -1,
+  time: 0.0,
+  level: 'TODOS',
+  logo: '',
+  path: '',
+  teacher: '',
+  reviews: [],
+};
+
 const mutation: IResolvers = {
   Mutation: {
     createCourse: (__: void, { course }): any => {
@@ -25,19 +38,10 @@ const mutation: IResolvers = {
         database.courses.push(newCourse);
         return newCourse;
       }
-      return {
-        id: 'Error. -1',
-        title: 'Error. The course already exists',
-        description: '',
-        class: -1,
-        time: 0.0,
-        level: 'TODOS',
-        logo: '',
-        path: '',
-        teacher: '',
-        reviews: [],
-      };
+      errorMessage.title = 'Error. The course already exists';
+      return errorMessage;
     },
+
     updateCourse: (__: void, { course }): any => {
       const result = _.findIndex(database.courses, function (o) {
         return o.id === course.id;
@@ -49,18 +53,20 @@ const mutation: IResolvers = {
         database.courses[result] = course;
         return course;
       }
-      return {
-        id: 'Error. -1',
-        title: 'Error. The course not exist',
-        description: '',
-        class: -1,
-        time: 0.0,
-        level: 'TODOS',
-        logo: '',
-        path: '',
-        teacher: '',
-        reviews: [],
-      };
+      return errorMessage;
+    },
+
+    deleteCourse: (__: void, { id }): any => {
+      const result = _.remove(database.courses, function (o) {
+        return o.id === id;
+      });
+
+      if (result[0] === undefined) {
+        errorMessage.title = 'Error. The course could not founded';
+        return errorMessage;
+      }
+
+      return result[0]
     },
   },
 };
