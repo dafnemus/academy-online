@@ -36,7 +36,31 @@ const mutation: IResolvers = {
         path: '',
         teacher: '',
         reviews: [],
-      };;
+      };
+    },
+    updateCourse: (__: void, { course }): any => {
+      const result = _.findIndex(database.courses, function (o) {
+        return o.id === course.id;
+      });
+
+      if (result > -1) {
+        const reviews = database.courses[result].reviews;
+        course.reviews = reviews;
+        database.courses[result] = course;
+        return course;
+      }
+      return {
+        id: 'Error. -1',
+        title: 'Error. The course not exist',
+        description: '',
+        class: -1,
+        time: 0.0,
+        level: 'TODOS',
+        logo: '',
+        path: '',
+        teacher: '',
+        reviews: [],
+      };
     },
   },
 };
